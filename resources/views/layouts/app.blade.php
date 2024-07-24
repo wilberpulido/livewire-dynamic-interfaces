@@ -18,7 +18,7 @@
             @include('layouts.navigation')
 
             <!-- Page Content -->
-            <main>
+            <main class="lg:container mx-auto">
                 {{ $slot }}
             </main>
         </div>
