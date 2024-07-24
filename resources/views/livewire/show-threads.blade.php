@@ -23,5 +23,38 @@
         </ul>
     </div>
     <div class="w-full" >
+    {{--        Form--}}
+        @foreach($threads as $thread)
+            <div class="rounded-md mb-4 dark:bg-gradient-to-r dark:from-slate-800 dark:to-slate-900 dark:hover:to-slate-00 " >
+                <div class="p-4 flex gap-4" >
+                    <div>Image, avatar</div>
+                    <div class="w-full">
+                        <h2 class="mb-4 flex items-start justify-between">
+                            <a href="" class="text-xl font-semibold dark:text-white/90" >
+                                {{ $thread->title }}
+                            </a>
+                            <span
+                                class="rounded-full text-xs py-2 px-4 capitalize"
+                                style="color: #00aced;border: 1px solid #00aced"
+                            >
+                                Categoria
+                            </span>
+                        </h2>
+                        <p class="flex items-center justify-between w-full text-xs">
+                            <span class="dark:text-blue-600 font-semibold">
+                                Usuario
+                                <span class="dark:text-white/90" >
+                                    {{$thread->created_at->diffForHumans()}}
+                                </span>
+                            </span>
+                            <span class="dark:text-slate-700">
+                                Respuestas y boton
+                            </span>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 </div>
