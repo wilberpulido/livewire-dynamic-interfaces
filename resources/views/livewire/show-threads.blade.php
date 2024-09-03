@@ -6,7 +6,7 @@
         <ul>
             @foreach($categories as $category)
                 <li class="mb-2">
-                    <a href="" class="p-2 rounded-md flex items-center gap-2 font-semibold text-xs capitalize dark:bg-slate-800 dark:text-white dark:hover:text-white/60 " >
+                    <a href="" wire:click.prevent="setFilterByCategoryId('{{ $category->id }}')"  class="p-2 rounded-md flex items-center gap-2 font-semibold text-xs capitalize dark:bg-slate-800 dark:text-white dark:hover:text-white/60 " >
                     <span class="w-2 h-2 rounded-full" style="background-color: {{$category->color}}">
                     </span>
                         {{ $category->name }}
@@ -14,7 +14,7 @@
                 </li>
             @endforeach
             <li class="mb-2">
-                <a href="" class="p-2 rounded-md flex items-center gap-2 font-semibold text-xs capitalize dark:bg-slate-800 dark:text-white dark:hover:text-white/60 " >
+                <a href="" wire:click.prevent="setFilterByCategoryId('')" class="p-2 rounded-md flex items-center gap-2 font-semibold text-xs capitalize dark:bg-slate-800 dark:text-white dark:hover:text-white/60 " >
                     <span class="w-2 h-2 rounded-full" style="background-color: #000">
                     </span>
                     {{ __('threads.show.all_results') }}
@@ -23,7 +23,14 @@
         </ul>
     </div>
     <div class="w-full" >
-    {{--        Form--}}
+        <form class="mb-4" action="">
+            <input id=""
+                type="text"
+                placeholder="texto"
+                class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
+                wire:model.live.debounce.200ms="search"
+            >
+        </form>
         @foreach($threads as $thread)
             <div class="rounded-md mb-4 dark:bg-gradient-to-r dark:from-slate-800 dark:to-slate-900 dark:hover:to-slate-00 " >
                 <div class="p-4 flex gap-4" >
