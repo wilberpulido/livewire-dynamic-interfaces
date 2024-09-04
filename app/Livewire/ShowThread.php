@@ -1,0 +1,12 @@
+<?php
+
+namespace App\Livewire;
+
+use App\Models\Thread;
+use Livewire\Component;
+
+class ShowThread extends Component
+{
+    public Thread $thread;
+
+}
