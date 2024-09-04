@@ -1,4 +1,4 @@
-<div class="mx-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex gap-10 py-12">
+<div class="mx-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="rounded-md mb-4 dark:bg-gradient-to-r dark:from-slate-800 dark:to-slate-900" >
         <div class="p-4 flex gap-4" >
             <div>
@@ -28,4 +28,14 @@
             </div>
         </div>
     </div>
+    <form wire: submit.prevent="postReply" class="mb-4">
+        <input
+               type="text"
+               placeholder="Write a reply"
+               class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
+               wire:model="body"
+        >
+    </form>
+
+
 </div>

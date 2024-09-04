@@ -23,10 +23,10 @@
         </ul>
     </div>
     <div class="w-full" >
-        <form class="mb-4" action="">
-            <input id=""
+        <form class="mb-4">
+            <input
                 type="text"
-                placeholder="texto"
+                placeholder="Search"
                 class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
                 wire:model.live.debounce.200ms="search"
             >
