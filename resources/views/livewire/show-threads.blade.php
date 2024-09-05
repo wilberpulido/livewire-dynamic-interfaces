@@ -67,7 +67,7 @@
                                 @else
                                     {{__('replies.title')}}
                                 @endif
-                                <a href="" class="dark:hover:text-white">
+                                <a href="{{route('threads.edit',$thread)}}" class="dark:hover:text-white">
                                     {{__('common.edit')}}
                                 </a>
                             </span>
