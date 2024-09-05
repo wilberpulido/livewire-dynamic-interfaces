@@ -28,14 +28,19 @@
             </div>
         </div>
     </div>
-    <form wire: submit.prevent="postReply" class="mb-4">
+    @foreach($replies as $reply)
+{{--        @livewire('show-reply',['reply'=>$reply],key('reply-'.$reply->id))--}}
+        <livewire:show-reply :$reply  :key="'reply-'.$reply->id" />
+    @endforeach
+
+    <form
+        wire:submit.prevent="postReply" class="mb-4"
+    >
         <input
-               type="text"
-               placeholder="Write a reply"
-               class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
-               wire:model="body"
+            type="text"
+            placeholder="Write a reply"
+            class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
+            wire:model="body"
         >
     </form>
-
-
 </div>

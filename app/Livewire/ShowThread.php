@@ -14,8 +14,6 @@ class ShowThread extends Component
     public function postReply()
     {
 //        validate
-        Log::debug('$this->body');
-        Log::debug($this->body);
         $this->validate(['body'=>'required']);
 //        create
         auth()->user()->replies()->create([
@@ -26,4 +24,8 @@ class ShowThread extends Component
         $this->body = '';
     }
 
+    function render(){
+        $replies = $this->thread->replies()->get();
+        return view('livewire.show-thread',compact('replies'));
+    }
 }

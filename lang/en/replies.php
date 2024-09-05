@@ -1,8 +1,6 @@
 <?php
 
 return [
-    'index' => [
-        'reply' => 'reply',
-        'replies' => 'replies',
-    ],
+    'singular_title' => 'Reply',
+    'title' => 'Replies',
 ];

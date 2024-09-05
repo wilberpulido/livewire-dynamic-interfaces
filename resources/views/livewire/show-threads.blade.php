@@ -63,12 +63,12 @@
                                 </svg>
                                 {{ $thread->replies_count }}
                                 @if( $thread->replies_count === 1 )
-                                    {{__('replies.index.reply')}}
+                                    {{__('replies.singular_title')}}
                                 @else
-                                    {{__('replies.index.replies')}}
+                                    {{__('replies.title')}}
                                 @endif
                                 <a href="" class="dark:hover:text-white">
-                                    Editar
+                                    {{__('common.edit')}}
                                 </a>
                             </span>
 
