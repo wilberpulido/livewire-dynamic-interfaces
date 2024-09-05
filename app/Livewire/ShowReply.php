@@ -10,9 +10,10 @@ class ShowReply extends Component
     public Reply $reply;
     public string $body;
     public bool $is_creating = false;
+    public bool $is_editing = false;
 //    prueba con emitSelf de livewire v2
 //    protected $listeners = ['refresh' => '$refresh'];
-    public function postChildReply()
+    public function postReply()
     {
         if(!is_null($this->reply->reply_id)) return;
 //        validate
@@ -33,6 +34,28 @@ class ShowReply extends Component
 //        $this->emitSelf('refresh');
 //        livewire v3 (Se refresca sin ejecutar esto)
 //        $this->dispatch('refresh')->self();
+
+    }
+    public function updatedIsEditing($is_editing)
+    {
+//        Se puede debuggear aca
+//        dd($is_editing);
+        $this->is_creating = false;
+        $this->body =  $this->reply->body;
+    }
+    public function updatedIsCreating()
+    {
+        $this->is_editing = false;
+        $this->body = '';
+    }
+    public function updateReply()
+    {
+//      validate
+        $this->validate(['body'=>'required']);
+//        create
+        $this->reply->update(['body' => $this->body,]);
+//        refresh
+        $this->is_editing = false;
 
     }
     public function render()

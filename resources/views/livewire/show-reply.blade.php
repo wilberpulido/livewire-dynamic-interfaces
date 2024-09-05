@@ -8,12 +8,29 @@
                 <p class="mb-2 dark:text-blue-600 font-semibold text-xs">
                     {{ $reply->user->name }}
                 </p>
-                <p class="text-xs dark:text-white/60">
-                    {{ $reply->body }}
-                </p>
+                @if($is_editing)
+                    <form
+                        wire:submit.prevent="updateReply" class="m-4"
+                    >
+                        <input
+                            type="text"
+                            placeholder="{{__('replies.placeholder')}}"
+                            class="border-1 rounded-md w-1/3 dark:border-slate-900 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
+{{--                            lvwr v2 si agregas la funcion updatedIsEditing --}}
+{{--                            wire:model="body"--}}
+                            lvwr v3
+                            value="{{$reply->body}}"
+                            wire:model.fill="body"
+                        >
+                    </form>
+                @else
+                    <p class="text-xs dark:text-white/60">
+                        {{ $reply->body }}
+                    </p>
+                @endif
                 @if($is_creating)
                     <form
-                        wire:submit.prevent="postChildReply" class="m-4"
+                        wire:submit.prevent="postReply" class="m-4"
                     >
                         <input
                             type="text"
@@ -29,7 +46,7 @@
                             {{__('replies.singular_title')}}
                         </a>
                     @endif
-                    <a href="" class="dark:hover:text-white">
+                    <a href="" wire:click.prevent="$toggle('is_editing')" class="dark:hover:text-white">
                         {{__('common.edit')}}
                     </a>
                 </p>
