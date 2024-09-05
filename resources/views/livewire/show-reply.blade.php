@@ -11,10 +11,24 @@
                 <p class="text-xs dark:text-white/60">
                     {{ $reply->body }}
                 </p>
+                @if($is_creating)
+                    <form
+                        wire:submit.prevent="postChildReply" class="m-4"
+                    >
+                        <input
+                            type="text"
+                            placeholder="{{__('replies.placeholder')}}"
+                            class="border-1 rounded-md w-1/3 dark:border-slate-900 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
+                            wire:model="body"
+                        >
+                    </form>
+                @endif
                 <p class="mt-4 text-xs flex gap-2 justify-end dark:text-white/60 " >
-                    <a href="" class="dark:hover:text-white">
-                        {{__('replies.singular_title')}}
-                    </a>
+                    @if(is_null($this->reply->reply_id))
+                        <a href="" wire:click.prevent="$toggle('is_creating')" class="dark:hover:text-white">
+                            {{__('replies.singular_title')}}
+                        </a>
+                    @endif
                     <a href="" class="dark:hover:text-white">
                         {{__('common.edit')}}
                     </a>
@@ -22,4 +36,11 @@
             </div>
         </div>
     </div>
+    @foreach($reply->replies as $reply)
+        {{--        @livewire('show-reply',['reply'=>$reply],key('reply-'.$reply->id))--}}
+        <div class="ml-8">
+            <livewire:show-reply :$reply  :key="'reply-'.$reply->id" />
+        </div>
+
+    @endforeach
 </div>

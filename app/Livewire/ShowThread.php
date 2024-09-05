@@ -9,7 +9,7 @@ use Livewire\Component;
 class ShowThread extends Component
 {
     public Thread $thread;
-    public $body;
+    public string $body;
 
     public function postReply()
     {
@@ -22,10 +22,14 @@ class ShowThread extends Component
         ]);
 //        refresh
         $this->body = '';
+//        TODO: Revisar, se limpia el atributo pero no se borra el texto del input
+//        $this->reset('body');
+//        Log::debug($this->body);
+
     }
 
     function render(){
-        $replies = $this->thread->replies()->get();
+        $replies = $this->thread->replies()->whereNull('reply_id')->get();
         return view('livewire.show-thread',compact('replies'));
     }
 }

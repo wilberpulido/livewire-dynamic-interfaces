@@ -38,7 +38,7 @@
     >
         <input
             type="text"
-            placeholder="Write a reply"
+            placeholder="{{__('replies.placeholder')}}"
             class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
             wire:model="body"
         >

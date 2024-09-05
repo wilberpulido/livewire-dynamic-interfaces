@@ -8,9 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Reply extends Model
 {
     use HasFactory;
-    protected $fillable = ['thread_id', 'body'];
+    protected $fillable = ['reply_id','thread_id', 'body'];
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function thread(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Thread::class);
+    }
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }
