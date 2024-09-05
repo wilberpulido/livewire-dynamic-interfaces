@@ -3,10 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\Reply;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 
 class ShowReply extends Component
 {
+    use authorizesRequests;
+
     public Reply $reply;
     public string $body;
     public bool $is_creating = false;
@@ -38,6 +41,8 @@ class ShowReply extends Component
     }
     public function updatedIsEditing($is_editing)
     {
+//        No da ni si quiera el acceso al formulario
+        $this->authorize('update', $this->reply);
 //        Se puede debuggear aca
 //        dd($is_editing);
         $this->is_creating = false;
@@ -50,6 +55,7 @@ class ShowReply extends Component
     }
     public function updateReply()
     {
+        $this->authorize('update', $this->reply);
 //      validate
         $this->validate(['body'=>'required']);
 //        create

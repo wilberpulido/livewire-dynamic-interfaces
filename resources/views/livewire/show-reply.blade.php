@@ -42,13 +42,15 @@
                 @endif
                 <p class="mt-4 text-xs flex gap-2 justify-end dark:text-white/60 " >
                     @if(is_null($this->reply->reply_id))
-                        <a href="" wire:click.prevent="$toggle('is_creating')" class="dark:hover:text-white">
-                            {{__('replies.singular_title')}}
-                        </a>
+                    <a href="" wire:click.prevent="$toggle('is_creating')" class="dark:hover:text-white">
+                        {{__('replies.singular_title')}}
+                    </a>
                     @endif
+                    @can('update',$reply)
                     <a href="" wire:click.prevent="$toggle('is_editing')" class="dark:hover:text-white">
                         {{__('common.edit')}}
                     </a>
+                    @endcan
                 </p>
             </div>
         </div>
