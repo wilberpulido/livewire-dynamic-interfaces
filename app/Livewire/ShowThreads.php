@@ -26,6 +26,7 @@ class ShowThreads extends Component
         if ($this->category_id) {
             $threadsQuery->where('category_id', $this->category_id);
         }
+        $threadsQuery->with('user', 'category');
         $threadsQuery->withCount('replies');
         $threadsQuery->latest();
         $threads = $threadsQuery->get();

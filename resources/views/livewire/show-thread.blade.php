@@ -40,7 +40,7 @@
             type="text"
             placeholder="{{__('replies.placeholder')}}"
             class="border-0 rounded-md w-1/3 p-3 dark:text-white/60 text-xs dark:bg-slate-800"
-            wire:model="body"
+            wire:model.live="body"
         >
     </form>
 </div>

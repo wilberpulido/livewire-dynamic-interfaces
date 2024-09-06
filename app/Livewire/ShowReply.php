@@ -30,7 +30,6 @@ class ShowReply extends Component
 //        refresh
         $this->is_creating = false;
         $this->body = '';
-//        TODO: Revisar, se limpia el atributo pero no se borra el texto del input
 //        $this->reset('body');
 //        Log::debug($this->body);
 //        livewire v2

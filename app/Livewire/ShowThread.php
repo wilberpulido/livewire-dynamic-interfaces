@@ -22,14 +22,15 @@ class ShowThread extends Component
         ]);
 //        refresh
         $this->body = '';
-//        TODO: Revisar, se limpia el atributo pero no se borra el texto del input
-//        $this->reset('body');
-//        Log::debug($this->body);
 
     }
 
     function render(){
-        $replies = $this->thread->replies()->whereNull('reply_id')->get();
+        $replies = $this->thread
+            ->replies()
+            ->whereNull('reply_id')
+            ->with('user','replies.user','replies.replies')
+            ->get();
         return view('livewire.show-thread',compact('replies'));
     }
 }
