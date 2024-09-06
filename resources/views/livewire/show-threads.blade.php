@@ -67,9 +67,11 @@
                                 @else
                                     {{__('replies.title')}}
                                 @endif
+                                @can('update',$thread)
                                 <a href="{{route('threads.edit',$thread)}}" class="dark:hover:text-white">
                                     {{__('common.edit')}}
                                 </a>
+                                @endcan
                             </span>
 
                         </p>
